@@ -113,4 +113,4 @@ editarProducto:(idProductoAEditar)=>{
         });
         }
 }
-    appproductos.listarProductos();
+appproductos.listarProductos();

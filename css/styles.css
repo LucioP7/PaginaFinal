@@ -3,13 +3,110 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     text-decoration: none;
-    list-style: none;
     font-family: 'Poppins', sans-serif;
 }
 
 header{
-    height: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
     width: 100%;
-    background-color: rgb(247, 60, 147);
+    height: 60px;
+    background: rgb(251, 129, 212);
+    box-shadow: 0 4px 25px -22px black;
+    z-index: 2;
+}
+
+.header-content{
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo h1{
+    color: crimson;
+}
+
+.logo h3{
+    color: black;
+    padding-left: 4px;
+}
+
+#a{
+    text-decoration: none;
+    color: black;
+}
+
+.menu{
+    height: 60px;
+
+}
+
+.menu nav{
+    height: 100%;
+}
+
+.menu nav ul{
+    height: 100%;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu nav ul li{
+    height: 100%;
+    margin: 0px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.menu-selected:before{
+    content: '';
+    width: 100%;
+    height: 4px;
+    background: crimson;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.menu nav ul li a{
+    color: crimson;
+    transition: color 300ms;
+    display: block;
+    padding: 10px;
+}
+
+.menu nav ul li a:hover{
+    color: crimson;
+    background-color: #555;
+}
+
+.menu .text-menu-selected{
+    color: crimson;
+}
+
+.container{
+    margin-top: 65px;;
+}
+
+#contenedorProductos{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
 }
