@@ -107,7 +107,7 @@ editarProducto:(idProductoAEditar)=>{
             document.getElementById("txtCosto").value=producto.costo;
             document.getElementById("txtImagen").value=producto.imagen;
             document.getElementById("txtDescripcion").value=producto.descripcion;
-            const ventanaEditar=document.getElementById(`agregarEditarModal`);
+            const ventanaEditar=document.getElementById(`agregarEditar`);
             let ventana=new bootstrap.Modal(ventanaEditar);
             ventana.show(); 
         });

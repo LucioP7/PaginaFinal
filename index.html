@@ -6,7 +6,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/aapp.js" defer></script>
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/formIniciarSesion.js" defer></script>
+    <script type="module" src="js/formRegistro.js" defer></script>
+    <script type="module" src="js/main.js" defer></script>
+    <script src="js/scroll.js" defer></script>
+    <script type="module" src="js/cerrarSesion.js" defer></script>
     <title>Sweet and Magic</title>
 </head>
 <body>
@@ -17,11 +26,14 @@
                     <div>
                         <ul>
                             <li>
-                                <a href="#" id="iniciarSesion">Iniciar Sesión</a>
+                                <a href="#" class="MenuDesconectado" data-bs-toggle="modal" data-bs-target="#iniciarSesionModal" id="iniciarSesion">Iniciar Sesión</a>
                             </li>
                             <li>
-                                <a href="#" id="registrarse">Registrarse</a>
+                                <a href="#" class="MenuDesconectado" data-bs-toggle="modal" data-bs-target="#RegistrarseModal" id="registrarse">Registrarse</a>
                             </li>
+                            <li>
+                              <a href="#" class="MenuConectado" id="menuCerrarSesion" >Cerrar Sesión</a>
+                          </li>
                         </ul>
                     </div>
             </nav>
@@ -39,6 +51,8 @@
       <main class="container" id="contenedorProductos">
       </main>
       
+      <a href="#" id="scrollUp">Subir</a>
+
       <div class="modal fade" id="agregarEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -64,47 +78,46 @@
         </div>
       </div>
   
-      <!-- Modal -->
-  <div class="modal fade" id="iniciarSesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Iniciar Sesión</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="IniciarSesionForm">
-              <label for="txtEmail" class="form-label">Email</label>
-              <input type="text" id="txtEmail" class="form-control mb-3" required>
-              <label for="txtPassword" class="form-label">Contraseña</label>
-              <input type="password" id="txtPassword" class="form-control" required>
-              <input type="submit" value="Enviar" class="form-control btn btn-primary mt-3">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-      <!-- Modal -->
-      <div class="modal fade" id="registrarse" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="iniciarSesionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Cuenta</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Iniciar Sesión</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form id="registroform">
+              <form id="IniciarSesionForm">
                 <label for="txtEmail" class="form-label">Email</label>
-                <input type="text" id="txtEmail" class="form-control mb-3" required>
+                <input type="text" id="txtEmail" class="form-control mb-3">
                 <label for="txtPassword" class="form-label">Contraseña</label>
-                <input type="password" id="txtPassword" class="form-control" required>
-                <input type="submit" value="Registrarse" class="form-control btn btn-primary mt-3">
+                <input type="password" id="txtPassword" class="form-control">
+                <input type="submit" value="Enviar" class="form-control btn btn-primary mt-3">
               </form>
             </div>
           </div>
         </div>
       </div>
+    
+        <div class="modal fade" id="RegistrarseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Cuenta</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="registroform">
+                  <label for="txtEmail" class="form-label">Email</label>
+                  <input type="text" id="txtEmail" class="form-control mb-3">
+                  <label for="txtPassword" class="form-label">Contraseña</label>
+                  <input type="password" id="txtPassword" class="form-control">
+                  <input type="submit" value="Registrarse" class="form-control btn btn-primary mt-3">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
   
 
     <footer class="container">
@@ -117,7 +130,7 @@
                 <p class="footer-text">Instituto Superior de Profesorado Nº20</p>
                 <p class="footer-text">Pagina Web para rendir materia</p>  
             </div>
-            <div class="footer-text-body-secondary">
+            <div class="footer-body-secondary">
                 San Justo - Santa Fe
             </div>
           </div>
